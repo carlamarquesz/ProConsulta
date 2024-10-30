@@ -5,6 +5,7 @@ using MudBlazor.Services;
 using ProConsulta.Components;
 using ProConsulta.Components.Account;
 using ProConsulta.Data;
+using ProConsulta.Repositories.Pacientes;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +20,7 @@ builder.Services.AddCascadingAuthenticationState();
 builder.Services.AddScoped<IdentityUserAccessor>();
 builder.Services.AddScoped<IdentityRedirectManager>();
 builder.Services.AddScoped<AuthenticationStateProvider, IdentityRevalidatingAuthenticationStateProvider>();
-
+builder.Services.AddScoped<IPacienteRepository, PacienteRepository>();
 builder.Services.AddAuthentication(options =>
 	{
 		options.DefaultScheme = IdentityConstants.ApplicationScheme;
